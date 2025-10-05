@@ -1,0 +1,36 @@
+{
+    "name": "subhashladumor/laravel-helperbox",
+    "description": "? Laravel HelperBox packs 600+ advanced helpers - SQL optimization, caching, APIs, AI tools, arrays, strings, Blade & model utilities. ?? Save time, boost performance & simplify coding for every project, from startups to enterprise.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Subhashladumor\\LaravelHelperbox\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Subhash Ladumor"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/http": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/cache": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/session": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/database": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/view": "^9.0|^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0|^11.0|^12.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Subhashladumor\\LaravelHelperbox\\HelperServiceProvider"
+            ]
+        }
+    }
+}
