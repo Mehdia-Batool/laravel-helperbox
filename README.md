@@ -1,22 +1,27 @@
 # Laravel HelperBox — Universal Helper Package
 
-A compact, organized reference for the 600+ helpers in this package. Full, per-function documentation (parameters, return values and extended examples) lives in `docs/FUNCTION_REFERENCE.md` — this README focuses on an organized quick reference and practical examples so you and your users can get started quickly.
+🚀 Laravel HelperBox is a production‑ready toolbox of 600+ global helpers for Laravel and plain PHP. Every helper is a simple function (no static classes), safely wrapped with `function_exists()` checks and optimized for day‑to‑day development.
 
-## Key points
+## ✨ Highlights
 
-- 600+ helpers across many domains (Arrays, Strings, Math, Blade, DB, Files, Cache, API, Security, Dev tools, Frontend, Data Science, and more).
-- Helpers are simple global functions and are wrapped with `function_exists()` checks.
-- Works with Laravel 9/10/11 and plain PHP projects.
+- **600+ helpers** across 25+ domains (arrays, strings, math, geo, caching, security, SQL, data science, and more)
+- **Simple usage**: call functions directly, e.g. `array_flatten_recursive()`
+- **Safe**: every function is guarded via `if (!function_exists())`
+- **Laravel-native**: auto‑discovered service provider, Blade directives, Cache/DB/Http facades
+- **Well-documented**: full reference with examples in `docs/FUNCTION_REFERENCE.md`
+- **Performant**: efficient algorithms, memory‑aware operations, optional caching
 
-## Installation
+## 📦 Installation
 
-Composer:
+### Composer
 
 ```bash
 composer require subhashladumor/laravel-helperbox
 ```
 
-Laravel auto-discovery registers the service provider. To manually register add:
+### Laravel auto‑discovery
+
+The package will be automatically discovered by Laravel. If you need to manually register it:
 
 ```php
 // config/app.php
@@ -26,191 +31,482 @@ Laravel auto-discovery registers the service provider. To manually register add:
 ],
 ```
 
-## How this README is organized
+No configuration required.
 
-- Quickstart examples for common categories
-- Concise category lists of representative functions
-- Links to full documentation
+## 🎯 Quick start
 
-For full function signatures, behaviors, and more examples see `docs/FUNCTION_REFERENCE.md`.
-
----
-
-## Quickstart — Use cases & examples
-
-Below are organized examples grouped by category. Copy/paste into your app or tinker to try them.
-
-Array helpers
+After installation, all helper functions are available globally:
 
 ```php
-$nested = [1, [2, [3, 4]], 5];
-$flat = array_flatten_recursive($nested); // [1,2,3,4,5]
+// Array Helpers
+$flattened = array_flatten_recursive($multiDimensionalArray);
+$xml = array_to_xml($array);
+$grouped = array_group_by($array, 'category');
 
-$users = [
+// String Helpers
+$slug = str_slugify('Hello World!');
+$camel = str_to_camel_case('hello_world');
+$masked = str_mask_middle('1234567890', 3);
+
+// Math Helpers
+$factorial = math_factorial(5);
+$fibonacci = math_fibonacci(10);
+$isPrime = math_is_prime(17);
+
+// Date Helpers
+$isToday = date_is_today($date);
+$daysDiff = date_diff_in_days($date1, $date2);
+$humanReadable = date_ago($date);
+
+// Blade Helpers
+@ifroute('admin.dashboard')
+    <p>Admin Dashboard Content</p>
+@endifroute
+
+@ifrole('admin')
+    <p>Admin Only Content</p>
+@endifrole
+
+// Geo Helpers
+$m = geo_haversine_distance(23.0205, 72.5797, 28.6139, 77.2090); // meters
+$hash = geo_point_to_hash(23.0205, 72.5797, 7);
+$polyline = geo_encode_polyline([[23.02,72.57],[23.03,72.58]]);
+```
+
+## 📚 Categories & examples
+
+This README shows representative examples for each category. For a complete, per‑function guide (parameters, returns, examples, and expected results), see:
+
+- docs/FUNCTION_REFERENCE.md — Core helpers (arrays, strings, math, blade, db, files, memory, controllers, date/time, cache/session, http/api, validation, advanced algorithms, advanced strings, advanced math)
+- The helper files in `src/Helpers/` — Advanced modules (JS‑style, advanced cache, file streaming, system monitoring, security/auth, dev utilities, 3rd‑party API, SQL optimization, data science/analytics, frontend optimization, geo)
+
+### 🔹 Array Helpers (30+ functions)
+- `array_flatten_recursive()` - Flatten multi-dimensional arrays
+- `array_to_xml()` - Convert arrays to XML
+- `array_group_by()` - Group arrays by key or callback
+- `array_multi_search()` - Recursive array search
+- `array_partition()` - Partition arrays based on conditions
+- `array_merge_recursive_distinct()` - Merge without overwriting
+- `array_to_csv()` - Convert arrays to CSV
+- And many more...
+
+Example:
+```php
+$nested = [1,[2,[3,4]],5];
+$flat = array_flatten_recursive($nested);        // [1,2,3,4,5]
+$grouped = array_group_by([
   ['id'=>1,'role'=>'admin'],
   ['id'=>2,'role'=>'user'],
-];
-$grouped = array_group_by($users, 'role');
-// ['admin' => [['id'=>1,...]], 'user' => [['id'=>2,...]]]
-
-$csv = array_to_csv([['a','b'],['c','d']]);
-// "a,b\n c,d\n"
+], 'role'); // ['admin'=>[...], 'user'=>[...]]
 ```
 
-String helpers
+### 🔹 String Helpers (30+ functions)
+- `str_slugify()` - Generate URL slugs
+- `str_to_camel_case()` - Convert to camelCase
+- `str_mask_middle()` - Mask sensitive strings
+- `str_levenshtein_distance()` - Calculate string similarity
+- `str_extract_emails()` - Extract email addresses
+- `str_highlight()` - Highlight search terms
+- And many more...
 
+Example:
 ```php
-str_slugify('Hello World!');              // 'hello-world'
-str_to_camel_case('hello_world_example'); // 'helloWorldExample'
+str_slugify('Hello World!');                // 'hello-world'
+str_to_camel_case('hello_world_example');   // 'helloWorldExample'
 str_mask_middle('john.doe@example.com', 2); // 'jo****@example.com'
-str_levenshtein_distance('kitten','sitting'); // int distance
 ```
 
-Math & Algorithms
+### 🔹 Math Helpers (30+ functions)
+- `math_factorial()` - Calculate factorials
+- `math_fibonacci()` - Generate Fibonacci numbers
+- `math_is_prime()` - Check prime numbers
+- `math_gcd()` - Greatest common divisor
+- `math_standard_deviation()` - Statistical calculations
+- `math_quadratic_roots()` - Solve quadratic equations
+- And many more...
 
+Example:
 ```php
 math_factorial(5);        // 120
 math_fibonacci(10);       // 55
 math_is_prime(17);        // true
-$g = math_gcd(48,18);     // 6
+math_gcd(48,18);          // 6
 ```
 
-Date & Time
+### 🔹 Blade Helpers (20+ functions)
+- `blade_if_route()` - Route-based conditionals
+- `blade_if_role()` - Role-based conditionals
+- `blade_format_date()` - Date formatting
+- `blade_asset_version()` - Asset versioning
+- `blade_inline_svg()` - Inline SVG rendering
+- And many more...
 
-```php
-date_is_today(now());
-date_diff_in_days('2024-01-01','2024-01-15'); // 14
-date_ago(now()->subHours(3)); // '3 hours ago'
-```
-
-Blade & Templating
-
+Example:
 ```blade
-{{-- In Blade templates --}}
 @ifroute('admin.dashboard')
   <p>Admin Dashboard</p>
 @endifroute
+```
+
+### 🔹 Model & Database Helpers (30+ functions)
+- `model_exists()` - Check model existence
+- `model_bulk_update()` - Bulk update operations
+- `db_table_size()` - Get table sizes
+- `db_optimize_table()` - Optimize database tables
+- `db_copy_table()` - Copy table structure and data
+- And many more...
+
+Example:
+```php
+model_exists(User::class, 1); // true/false
+db_optimize_table('users');   // true
+```
+
+### 🔹 File & Path Helpers (30+ functions)
+- `file_get_mime()` - Detect MIME types
+- `file_copy_recursive()` - Recursive directory copying
+- `file_hash()` - Calculate file hashes
+- `file_search()` - Search text in files
+- `file_backup()` - Create file backups
+- And many more...
+
+Example:
+```php
+file_get_mime('/path/img.jpg');   // 'image/jpeg'
+file_copy_recursive('a','b');     // true
+```
+
+### 🔹 Memory & System Helpers (20+ functions)
+- `memory_usage()` - Get memory usage
+- `memory_peak()` - Get peak memory usage
+- `system_uptime()` - Get system uptime
+- `system_loadavg()` - Get load averages
+- `system_health_check()` - Perform health checks
+- And many more...
+
+Example:
+```php
+memory_usage_human(); // '12.3 MB'
+system_health_check();
+```
+
+### 🔹 Controller & Repository Helpers (20+ functions)
+- `controller_action_name()` - Get current action
+- `controller_middleware_list()` - List applied middleware
+- `repository_find_by()` - Find by field and value
+- `repository_bulk_update()` - Bulk update operations
+- And many more...
+
+Example:
+```php
+controller_action_name(); // 'UserController@index'
+```
+
+### 🔹 Date & Time Helpers (30+ functions)
+- `date_is_today()` - Check if date is today
+- `date_diff_in_days()` - Calculate day differences
+- `date_start_of_week()` - Get week start
+- `date_get_working_days()` - Calculate working days
+- `date_format_relative()` - Relative time formatting
+- And many more...
+
+Example:
+```php
+date_diff_in_days('2024-01-01','2024-01-15'); // 14
+date_ago(now()->subHours(3));                // '3 hours ago'
+```
+
+### 🔹 Cache & Session Helpers (20+ functions)
+- `cache_has_or_store()` - Store if not exists
+- `cache_increment()` - Increment cache values
+- `session_flash_success()` - Flash success messages
+- `cache_remember_with_tags()` - Tagged caching
+- And many more...
+
+Example:
+```php
+cache_has_or_store('key', fn()=>expensive(), 3600);
+session_flash_success('Saved!');
+```
+
+### 🔹 API & HTTP Helpers (30+ functions)
+- `http_get_json()` - GET requests with JSON
+- `http_post_json()` - POST requests with JSON
+- `api_success()` - Success API responses
+- `api_error()` - Error API responses
+- `http_download()` - File downloads
+- And many more...
+
+Example:
+```php
+use Illuminate\Support\Facades\Http;
+
+$users = http_get_json('https://api.example.com/users');
+return api_success($users);
+```
+
+### 🔹 Validation Helpers (20+ functions)
+- `validate_email()` - Email validation
+- `validate_credit_card()` - Credit card validation
+- `validate_password_strength()` - Password strength
+- `sanitize_string()` - String sanitization
+- `validate_all()` - Bulk validation
+- And many more...
+
+Example:
+```php
+validate_email('test@example.com');     // true
+validate_credit_card('4111111111111111'); // true
+```
+### 🔹 JavaScript‑style Helpers (40+ functions)
+- Lodash‑like utilities: `flatten_deep`, `group_by`, `unique_by`, `zip_arrays`, `order_by`, `key_by`, `intersection`, `difference`, `union_arrays`
+- Function helpers: `once`, `memoize`, `debounce`, `throttle`, `pipe`, `compose`, `curry`, `partial`
+
+Example:
+```php
+$unique = unique_by([["id"=>1],["id"=>1],["id"=>2]], 'id'); // [[id=>1],[id=>2]]
+```
+
+### 🔹 Advanced Cache Helpers (40+ functions)
+- Stampede prevention, tagged/versioned keys, jittered TTLs, chunked/cache‑compressed payloads, locks, rate limiting
+
+Example:
+```php
+$out = cache_with_jitter('report:v1', 3600, 15, fn()=>buildReport());
+```
+
+### 🔹 File & Streaming Helpers (40+ functions)
+- Stream large files, chunked uploads/merges, temporary URLs, hashing, simple encryption/decryption
+
+Example:
+```php
+return stream_file_response(storage_path('app/big.csv'), 'data.csv');
+```
+
+### 🔹 System Monitoring & Optimization (40+ functions)
+- CPU/memory/disk/network snapshots, latency timers, simple rate counters
+
+Example:
+```php
+latency_timer(fn()=>User::count()); // ['ms'=>..., 'result'=>...] 
+```
+
+### 🔹 Security & Authentication (40+ functions)
+- Tokens, password strength, TOTP 2FA, IP allow/deny, brute‑force guards, session utilities
+
+Example:
+```php
+$secret = totp_generate_secret();
+$code = totp_now($secret);           // '123456'
+totp_verify($secret, $code);         // true
+```
+
+### 🔹 Advanced Developer Utilities (40+ functions)
+- Query tracing, timing, SQL dump, deterministic RNG seed, lightweight HTTP mocks
+
+### 🔹 3rd‑Party API Helpers (40+ functions)
+- Retry/backoff, GraphQL helper, HMAC signatures, webhook verify, response masking
+
+### 🔹 SQL Optimization & Data (40+ functions)
+- EXPLAIN wrappers, index suggestions, batch insert, raw auto‑pagination, streaming selects
+
+### 🔹 Data Science & Analytics (40+ functions)
+- Mean/median/mode/stddev, correlation, linear regression, moving average, exponential smoothing, k‑means, confusion matrix
+
+### 🔹 Frontend Optimization (40+ functions)
+- Minify CSS/JS/HTML, inline critical CSS, async/defer scripts, cache‑busting
+
+### 🔹 Spatial, Geohash & Geo‑SQL (501–540)
+- Haversine/equirectangular distance, geohash encode/decode, tiles/bbox, polyline encode/decode, DBSCAN clustering, bearings/compass
+
+Example:
+```php
+geo_haversine_distance(23.02,72.57,23.03,72.58); // meters
+geo_point_to_hash(23.02,72.57,7);                // 'tp...'
+geo_decode_polyline($polyline);                  // [[lat,lon],...]
+```
+
+## 🎨 Blade directives
+
+The package includes custom Blade directives for enhanced templating:
+
+```blade
+@ifroute('admin.dashboard')
+    <p>Admin Dashboard Content</p>
+@endifroute
+
+@ifcontroller('AdminController')
+    <p>Admin Controller Content</p>
+@endifcontroller
 
 @ifrole('admin')
-  <p>Only for admins</p>
+    <p>Admin Only Content</p>
 @endifrole
+
+@ifpermission('edit-posts')
+    <p>Edit Posts Permission</p>
+@endifpermission
 ```
 
-Model & Database
+## 🔧 Configuration
 
+The package works out of the box with default settings. You can customize behavior by publishing the config file:
+
+```bash
+php artisan vendor:publish --provider="Subhashladumor\LaravelHelperbox\HelperServiceProvider"
+```
+
+## 📖 More examples
+
+### Array operations
 ```php
-model_exists(App\\Models\\User::class, 1); // true|false
-$dbsize = db_table_size('users');
-db_export_to_json('posts'); // writes JSON to storage/app
+// Flatten nested arrays
+$nested = [1, [2, [3, 4]], 5];
+$flattened = array_flatten_recursive($nested);
+// Result: [1, 2, 3, 4, 5]
+
+// Group by key
+$users = [
+    ['name' => 'John', 'role' => 'admin'],
+    ['name' => 'Jane', 'role' => 'user'],
+    ['name' => 'Bob', 'role' => 'admin']
+];
+$grouped = array_group_by($users, 'role');
+// Result: ['admin' => [...], 'user' => [...]]
+
+// Convert to XML
+$data = ['name' => 'John', 'age' => 30];
+$xml = array_to_xml($data);
 ```
 
-File & Streaming
-
+### String manipulation
 ```php
-file_get_mime(storage_path('app/photo.jpg')); // 'image/jpeg'
-$fileList = file_list_recursive(base_path('tests/fixtures'));
-return file_stream_to_response(storage_path('app/big.csv'), 'big.csv');
+// Generate slugs
+$slug = str_slugify('Hello World!');
+// Result: 'hello-world'
+
+// Convert cases
+$camel = str_to_camel_case('hello_world');
+// Result: 'helloWorld'
+
+// Mask sensitive data
+$masked = str_mask_middle('1234567890', 3);
+// Result: '123****890'
 ```
 
-Cache & Session
-
+### Mathematical operations
 ```php
-cache_has_or_store('report:v1', fn()=>build_report(), 3600);
-session_flash_success('Saved successfully');
+// Calculate factorials
+$factorial = math_factorial(5);
+// Result: 120
+
+// Generate Fibonacci numbers
+$fibonacci = math_fibonacci(10);
+// Result: 55
+
+// Check prime numbers
+$isPrime = math_is_prime(17);
+// Result: true
 ```
 
-HTTP & API
-
+### Date & time operations
 ```php
-$users = http_get_json('https://api.example.com/users');
-return api_success($users, 'Fetched users');
+// Check if date is today
+$isToday = date_is_today('2024-01-15');
 
-// Retry example
-$response = api_request_retry('https://api.svc/endpoint', 'post', ['a'=>1], 3);
+// Calculate differences
+$days = date_diff_in_days('2024-01-01', '2024-01-15');
+// Result: 14
+
+// Get relative time
+$relative = date_ago('2024-01-01');
+// Result: '2 weeks ago'
 ```
 
-Validation & Security
-
+### Database operations
 ```php
-validate_email('test@example.com'); // true
-validate_credit_card('4111111111111111'); // true (Luhn)
-$secret = auth_two_factor_generate($user);
-auth_two_factor_verify($user, $code);
+// Check if model exists
+$exists = model_exists(User::class, 1);
+
+// Bulk update
+$updated = model_bulk_update(User::class, [
+    1 => ['status' => 'active'],
+    2 => ['status' => 'inactive']
+]);
+
+// Get table size
+$size = db_table_size('users');
 ```
 
-Developer utilities
-
+### File operations
 ```php
-// Time a DB query
-dev_query_timer(function(){ return DB::table('users')->count(); });
-// Dump SQL with bindings
-dev_dump_sql(User::where('active',1)->toSql(), User::getBindings());
+// Get file MIME type
+$mime = file_get_mime('/path/to/file.jpg');
+// Result: 'image/jpeg'
+
+// Copy directory recursively
+$copied = file_copy_recursive('/source', '/destination');
+
+// Search in files
+$matches = file_search('/path/to/file.txt', 'search term');
 ```
 
-Frontend optimizations
-
+### API responses
 ```php
-$html = file_get_contents(public_path('index.html'));
-$html = frontend_inline_critical_css($html, 'body{...}');
-$html = frontend_lazyload_images($html);
+// Success response
+return api_success($data, 'Operation successful');
+
+// Error response
+return api_error('Something went wrong', 400);
+
+// Validation error
+return api_validation_error($errors, 'Validation failed');
 ```
 
-Data Science & AI helpers
+## 🧪 Testing
 
-```php
-$mean = ds_mean([1,2,3,4]);
-$forecast = ds_forecast_next([10,12,13,12,15], 3);
-$clusters = ds_cluster_kmeans($points, 3);
+Run the test suite:
+
+```bash
+composer test
 ```
+
+## 📊 Performance
+
+The package is optimized for performance:
+- **Memory Efficient** - Minimal memory footprint
+- **Fast Execution** - Optimized algorithms
+- **Lazy Loading** - Functions loaded only when needed
+- **Caching Ready** - Built-in caching support
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Subhash Ladumor**
+- GitHub: [@subhashladumor](https://github.com/subhashladumor)
+
+## 🙏 Acknowledgments
+
+- Laravel community for the amazing framework
+- PHP community for continuous improvements
+- All contributors who help make this package better
+
+## 📈 Changelog
+
+### v1.0.0
+- Initial release
+- 600+ helper functions
+- Laravel integration
+- Blade directives
+- Comprehensive documentation
 
 ---
 
-## Organized categories (concise list)
-
-Each category below lists representative helpers. The complete list with signatures and examples is in `docs/FUNCTION_REFERENCE.md`.
-
-- Array: array_flatten_recursive, array_to_xml, array_group_by, array_multi_search, array_pluck_recursive, array_merge_recursive_distinct, array_to_csv, array_random_subset
-- String: str_slugify, str_to_camel_case, str_to_snake_case, str_mask_middle, str_levenshtein_distance, str_random_alnum, str_title_case
-- Math & Algorithms: math_factorial, math_fibonacci, math_is_prime, math_gcd, math_lcm, math_matrix_multiply, math_fft
-- Blade: blade_if_route, blade_if_role, blade_format_date, blade_asset_version, blade_inline_svg
-- Model & DB: model_exists, model_clone_with_relations, db_table_exists, db_column_exists, db_upsert_batch, db_stream_query
-- File & Path: file_get_extension, file_get_mime, file_copy_recursive, file_delete_recursive, file_stream_to_response, file_temp
-- Memory & System: memory_usage, memory_peak, cpu_usage, system_uptime, system_loadavg
-- Controller & Repository: controller_action_name, controller_class_name, repository_find_by, repository_update_by
-- Date & Time: date_is_today, date_diff_in_days, date_start_of_week, date_end_of_month, date_to_timezone, date_ago
-- Cache & Session: cache_has_or_store, cache_forget_if_exists, cache_remember_or_lock, cache_invalidate_model, cache_auto_compress
-- API & HTTP: http_get_json, http_post_json, api_success, api_error, api_request_retry, api_graphql_query
-- Validation: validate_email, validate_url, validate_ip, validate_json, validate_uuid, validate_credit_card
-- JS-style utilities: js_array_map_recursive, js_array_flatten_depth, js_debounce, js_throttle, js_memoize
-- Advanced caching & performance: cache_ttl_randomized, cache_precompute, cache_or_queue_refresh, cache_stream_file
-- File streaming & uploads: file_chunk_upload, file_chunk_merge, file_resume_upload, file_stream_zip, file_temp_link
-- System monitoring: system_health_report, system_log_rotation, system_queue_backlog, system_api_failure_rate
-- Security & Auth: auth_token_generate, auth_token_verify, auth_two_factor_generate, auth_bruteforce_protect, auth_impersonate
-- Dev utilities: dev_query_timer, dev_request_timer, dev_event_trace, dev_mock_http_response
-- 3rd-party APIs & integrations: api_request_retry, api_batch_request, api_graphql_query, api_oauth_refresh, api_webhook_verify
-- SQL optimization & data utilities: sql_explain_analyze, sql_auto_index_suggestions, sql_batch_insert, sql_stream_query, sql_detect_n_plus_one
-- Data Science & Analytics: ds_mean, ds_median, ds_correlation, ds_regression_line, ds_cluster_kmeans
-- Frontend & Web optimization: frontend_minify_css, frontend_minify_js, frontend_inline_critical_css, frontend_lazyload_images, frontend_cache_busting
-- Geo & Spatial: geo_haversine_distance, geo_point_to_hash, geo_encode_polyline, geo_decode_polyline
-
----
-
-## Contributing
-
-Contributions, bug reports and improvements are welcome. Please:
-
-1. Open an issue describing the change.
-2. Submit a pull request with tests (where applicable).
-
-Follow PSR‑12 style. Run tests with PHPUnit.
-
----
-
-## Where to find full docs
-
-All functions, grouped by category with parameter lists, return values and usage examples are documented in `docs/FUNCTION_REFERENCE.md`.
-
-If you want, I can:
-- Generate a category index (separate markdown files per category)
-- Produce example test cases for a selection of helpers
-- Add links from each helper listed here to its entry in `docs/FUNCTION_REFERENCE.md`
+**Made with ❤️ for the Laravel community**
