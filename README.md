@@ -108,4 +108,5 @@ Contributions are welcome! Fixes, docs, tests, and new helpers are appreciated.
 
 MIT © Subhash Ladumor
 
+**Made with ❤️ for the Laravel community**
 
