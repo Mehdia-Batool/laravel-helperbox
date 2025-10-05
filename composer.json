@@ -3,7 +3,7 @@
     "description": "Laravel HelperBox packs 600+ advanced helpers - SQL optimization, caching, APIs, AI tools, arrays, strings, Blade & model utilities. ?? Save time, boost performance & simplify coding for every project, from startups to enterprise.",
     "type": "library",
     "license": "MIT",
-    "version":"1.0.1",
+    "version":"1.0.2",
     "keywords": [
         "laravel",
         "docker",
